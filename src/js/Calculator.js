@@ -1,9 +1,11 @@
-export class CalculatorThree {
+export class Calculator {
     constructor() {
         this.number = 0
         this.number1 = document.querySelector('.operation__number1')
         this.number2 = document.querySelector('.operation__number2')
         this.operators = ['+', '-', '*', '/']
+        this.timer = document.querySelector('.main__timeline')
+       
     }
 
 
@@ -16,7 +18,7 @@ export class CalculatorThree {
 
     checkUserAnswer(operator) {
         const operatorCheck = document.querySelectorAll('.userCheck')
-        const score = document.querySelector('.heading__result')
+        const score = document.querySelector('.results__actual')
 
         operatorCheck.forEach(function (el) {
             el.addEventListener('click', function (el) {
@@ -83,5 +85,19 @@ export class CalculatorThree {
         this.number2.innerText = randomNumber2
 
         this.showOperation(this.operators[randomOperator], randomNumber1, randomNumber2)
+        this.timer.classList.add('timer-end')
+        // setTimeout(() => {
+        //     this.number1.innerText = '';
+        //     this.number2.innerText = '';
+        //     const resultElement = document.querySelector('.operation__result');
+        //     resultElement.innerText = '';
+        // }, 30000);
+        setTimeout(() => {
+           alert('end')
+        }, 50000)
+
+
+    
+
     }
 }
