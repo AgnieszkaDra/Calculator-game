@@ -5,9 +5,12 @@ export class Calculator {
         this.number2 = document.querySelector('.operation__number2')
         this.operators = ['+', '-', '*', '/']
         this.timer = document.querySelector('.main__timeline')
+        this.actualResult = document.querySelector('.results__actual')
+        this.actualResultArray = []
+        this.totalResult = document.querySelector('.results__total')
+        this.maxValue = Math.max(...this.actualResultArray);
        
     }
-
 
     chooseRandom(element) {
         let number;
@@ -19,6 +22,7 @@ export class Calculator {
     checkUserAnswer(operator) {
         const operatorCheck = document.querySelectorAll('.userCheck')
         const score = document.querySelector('.results__actual')
+        console.log(this.actualResult.value)
 
         operatorCheck.forEach(function (el) {
             el.addEventListener('click', function (el) {
@@ -33,8 +37,6 @@ export class Calculator {
             }.bind(this))
         }.bind(this))
     }
-
-
 
     showOperation(operator, num1, num2) {
 
@@ -71,7 +73,18 @@ export class Calculator {
 
     }
 
+    saveData() {
+        let new__data = this.actualResultArray
+        let max = Math.max(...new__data);
+        const stringObject = JSON.stringify(max)
+        localStorage.setItem('object', stringObject)
+        const res = localStorage.getItem('object')
+        this.totalResult.innerText = res
+
+    }
+
     render() {
+      
         let randomOperator;
         randomOperator = Math.floor(Math.random() * this.operators.length);
 
@@ -86,18 +99,17 @@ export class Calculator {
 
         this.showOperation(this.operators[randomOperator], randomNumber1, randomNumber2)
         this.timer.classList.add('timer-end')
-        // setTimeout(() => {
-        //     this.number1.innerText = '';
-        //     this.number2.innerText = '';
-        //     const resultElement = document.querySelector('.operation__result');
-        //     resultElement.innerText = '';
-        // }, 30000);
-        setTimeout(() => {
-           alert('end')
-        }, 50000)
 
+        const parsedValue = parseFloat(this.actualResult.innerText)
+        console.log(this.actualResultArray)
+        if (!isNaN(parsedValue)) {
 
-    
+            this.actualResultArray.push(parsedValue);
+        } else {
 
+            this.actualResultArray.push(Number(0));
+        }
+
+        this.saveData()
     }
 }
