@@ -244,7 +244,7 @@ a {
     width: 0;
   }
 }
-.timer-end {
+.timer-start {
   animation-name: decreaseWidth;
   animation-duration: 15s;
   animation-timing-function: ease;

@@ -16,7 +16,6 @@ export class Calculator {
         let number;
         number = Math.floor(Math.random() * element);
         return number
-
     }
 
     checkUserAnswer(operator) {
@@ -80,7 +79,6 @@ export class Calculator {
         localStorage.setItem('object', stringObject)
         const res = localStorage.getItem('object')
         this.totalResult.innerText = res
-
     }
 
     render() {
