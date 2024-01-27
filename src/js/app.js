@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
         start() {
             header.classList.remove('active')
             main.classList.add('active')
+            totalResult.innerText = localStorage.getItem('result1')
+            totalResult2.innerText = localStorage.getItem('result1')
             const calculator = new Calculator()
             calculator.start()
         },
@@ -34,12 +36,10 @@ document.addEventListener('DOMContentLoaded', function () {
         },
 
         stop() {
-            showOperation = false
-            totalResult.innerText = new Calculator().getValue()
-            totalResult2.innerText = new Calculator().getValue()
-            
+            showOperation = false 
             localStorage.setItem('result1', new Calculator().getValue())
-            const res = localStorage.getItem('result1')
+            totalResult.innerText = localStorage.getItem('result1')
+            totalResult2.innerText = localStorage.getItem('result1')
         }
     };
 
