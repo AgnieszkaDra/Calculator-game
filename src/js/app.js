@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function () {
             
             localStorage.setItem('result1', new Calculator().getValue())
             const res = localStorage.getItem('result1')
-            console.log(res)
         }
     };
 
